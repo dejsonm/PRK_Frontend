@@ -1,0 +1,16 @@
+<section class="header-container">
+  <div class="row">
+    <div class="col-md-6 header-title-container">
+      <a [routerLink]="['/warehouse']"><h3><span class="warehouseblue">ANGULAR</span><span class="warehouseorange">MAGAZYN</span></h3></a>
+    </div>
+    <div class="col-md-6 header-navigation-container">
+      <ul>
+        <li><a [routerLink]="['/warehouse']" [routerLinkActive]="['nav-active']" [routerLinkActiveOptions]="{exact:
+true}">SHOP</a></li>
+        <li><a [routerLink]="['/cart']" [routerLinkActive]="['nav-active']" [routerLinkActiveOptions]="{exact:
+true}">CART</a></li>
+        <li><a (click)="logout()">LOGOUT</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
