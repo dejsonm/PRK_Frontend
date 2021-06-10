@@ -1,6 +1,6 @@
 export class OrderResponseDto {
-  orderDate: string
-  orderId: number
-  status:string
-  userId:string
+  public orderDate: string | undefined
+  public orderId: number | undefined
+  public status: string | undefined
+  public userId:string | undefined
 }

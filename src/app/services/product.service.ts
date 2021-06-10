@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ProductResponseDto} from "../models/product-response-dto";
 import {OrderResponseDto} from "../models/order-response-dto";
+import {ProductDto} from "../models/product-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -19,20 +20,33 @@ export class ProductService {
     return this.http.get('http://localhost:8080/api/v1/products',{headers:headers})
   }
 
-  createProduct(token: string): Observable<ProductResponseDto>{
+  createProduct( productCurrency: string, productName: string, productPrice: number, productQuantity:number): Observable<void>{
     let headers: HttpHeaders = new HttpHeaders()
+    let body: ProductDto = new ProductDto()
 
-    headers = headers.set('Authorization', token);
+    headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
+    body.productCurrency = productCurrency;
+    body.productName = productName;
+    body.productPrice = productPrice;
+    body.productQuantity = productQuantity;
 
-    return this.http.post('http://localhost:8080/api/v1/products',null,{headers:headers})
+
+
+    return this.http.post<void>('http://localhost:8080/api/v1/products',body,{headers:headers})
   }
 
-  updateProduct(token: string,productId: number,currency: string,name: string,price:number,quantity:number):Observable<ProductResponseDto>{
+  updateProduct(productId: number,currency: string,name: string,price:number,quantity:number):Observable<void>{
     let headers: HttpHeaders = new HttpHeaders();
+    let body: ProductDto = new ProductDto();
 
-    headers = headers.set('Authentication', token);
+    headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
-    return this.http.put<OrderResponseDto>('http://localhost:8080/api/v1/products/${productId}',null,{headers:headers});
+    body.productCurrency = currency;
+    body.productName = name;
+    body.productPrice = price;
+    body.productQuantity = quantity;
+
+    return this.http.put<void>(`http://localhost:8080/api/v1/products/${productId}`,body,{headers:headers});
   }
 
   deleteOrder(token: string,productId: number): Observable<unknown>{
