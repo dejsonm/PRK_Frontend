@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ProductResponseDto} from "../models/product-response-dto";
-import {OrderResponseDto} from "../models/order-response-dto";
-import {ProductDto} from "../models/product-dto";
+import {ProductResponseDto} from "../models/product/product-response-dto";
+import {OrderResponseDto} from "../models/order/orders-dto";
+import {ProductUpdateDto} from "../models/product/product-update-dto";
+import {ProductsDto} from "../models/product/products-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +13,17 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
-  getProducts(token: string): Observable<ProductResponseDto>{
+  getProducts(token: string): Observable<ProductsDto>{
     let headers: HttpHeaders = new HttpHeaders()
 
-    headers = headers.set('Authorization', token);
+    headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
-    return this.http.get('http://localhost:8080/api/v1/products',{headers:headers})
+    return this.http.get<ProductsDto>('http://localhost:8080/api/v1/products',{headers:headers})
   }
 
   createProduct( productCurrency: string, productName: string, productPrice: number, productQuantity:number): Observable<void>{
     let headers: HttpHeaders = new HttpHeaders()
-    let body: ProductDto = new ProductDto()
+    let body: ProductUpdateDto = new ProductUpdateDto()
 
     headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
     body.productCurrency = productCurrency;
@@ -37,7 +38,7 @@ export class ProductService {
 
   updateProduct(productId: number,currency: string,name: string,price:number,quantity:number):Observable<void>{
     let headers: HttpHeaders = new HttpHeaders();
-    let body: ProductDto = new ProductDto();
+    let body: ProductUpdateDto = new ProductUpdateDto();
 
     headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
@@ -49,12 +50,12 @@ export class ProductService {
     return this.http.put<void>(`http://localhost:8080/api/v1/products/${productId}`,body,{headers:headers});
   }
 
-  deleteOrder(token: string,productId: number): Observable<unknown>{
+  deleteOrder(productId: number): Observable<unknown>{
     let headers: HttpHeaders = new HttpHeaders();
 
-    headers = headers.set('Authentication', token);
+    headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
-    return this.http.delete('http://localhost:8080/api/v1/products/${productId}',{headers:headers},)
+    return this.http.delete(`http://localhost:8080/api/v1/products/${productId}`,{headers:headers},)
   }
 
 

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {LoginResponseDto} from "../models/login-response-dto";
-import {SignupDto} from "../models/signup-dto";
+import {LoginResponseDto} from "../models/login/login-response-dto";
+import {SignupDto} from "../models/login/signup-dto";
 import {tap} from "rxjs/operators";
 
 @Injectable({
