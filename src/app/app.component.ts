@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private loginservice:LoginService,
   private productservice:ProductService) {
     //loginservice.login('test','test123').subscribe(result=> console.log(result))
-loginservice.login('test','test123').subscribe(result => productservice.updateProduct(3,'EU','deska',151,132).subscribe())
+loginservice.login('test','test123').subscribe(result => productservice.getProducts().subscribe(result => console.log(result)))
 
 
 

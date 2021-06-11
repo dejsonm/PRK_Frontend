@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ProductResponseDto} from "../models/product/product-response-dto";
-import {OrderResponseDto} from "../models/order/orders-dto";
 import {ProductUpdateDto} from "../models/product/product-update-dto";
 import {ProductsDto} from "../models/product/products-dto";
 
@@ -13,7 +11,7 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
-  getProducts(token: string): Observable<ProductsDto>{
+  getProducts(): Observable<ProductsDto>{
     let headers: HttpHeaders = new HttpHeaders()
 
     headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
