@@ -5,20 +5,21 @@ import {HttpClientModule} from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthComponent } from './auth/auth/auth.component';
-import { LoginComponent } from './auth/login/login/login.component';
+import {SitesModule} from "./components/sites.module";
+import {AuthModule} from "./auth/auth.module";
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SitesModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

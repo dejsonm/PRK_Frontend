@@ -1,0 +1,60 @@
+
+<div class="menu-row">
+  <a routerLink="/products" class="menu-list-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon class="menu-icon" mat-card-avatar> local_grocery_store</mat-icon>
+        <mat-card-title>Produkty</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>Zobacz produkty dostępne w sklepie</mat-card-content>
+    </mat-card>
+  </a>
+</div>
+<div class="menu-row">
+  <a routerLink="/cart" class="menu-list-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon class="menu-icon" mat-card-avatar>add_box</mat-icon>
+        <mat-card-title>Mój koszyk</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Zobacz co wybrałeś</p>
+      </mat-card-content>
+    </mat-card>
+  </a>
+</div>
+<div class="menu-row">
+  <a routerLink="/myorders" class="menu-list-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon class="menu-icon" mat-card-avatar>create_new_folder</mat-icon>
+        <mat-card-title>Moje zamówienia</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>Zobacz co zamówiłeś</mat-card-content>
+    </mat-card>
+  </a>
+</div>
+<div *ngIf="checkstatus" class="menu-row">
+  <a routerLink="/orders" class="menu-list-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon class="menu-icon" mat-card-avatar>question_answer</mat-icon>
+        <mat-card-title>Zamówienia</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>Zobacz wszystkie zamówenia</mat-card-content>
+    </mat-card>
+  </a>
+</div>
+
+<div *ngIf="checkstatus" class="menu-row">
+  <a routerLink="/users" class="menu-list-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon class="menu-icon" mat-card-avatar>face</mat-icon>
+        <mat-card-title>Użytkownicy</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>Zobacz użytkowników aplikacji</mat-card-content>
+    </mat-card>
+  </a>
+</div>
+

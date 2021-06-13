@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ProductUpdateDto} from "../models/product/product-update-dto";
-import {ProductsDto} from "../models/product/products-dto";
+import {ProductDto} from "../models/product/product-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +11,12 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
-  getProducts(): Observable<ProductsDto>{
+  getProducts(): Observable<ProductDto[]>{
     let headers: HttpHeaders = new HttpHeaders()
 
     headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
-    return this.http.get<ProductsDto>('http://localhost:8080/api/v1/products',{headers:headers})
+    return this.http.get<ProductDto[]>('http://localhost:8080/api/v1/products',{headers:headers})
   }
 
   createProduct( productCurrency: string, productName: string, productPrice: number, productQuantity:number): Observable<void>{

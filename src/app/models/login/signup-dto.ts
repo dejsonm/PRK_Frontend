@@ -1,5 +1,8 @@
-export class SignupDto {
+import {PasswordDto} from "./password-dto";
 
-  public lastName: string | undefined
-  public name: string | undefined;
+export class SignupDto {
+  public username!: string;
+  public password!: PasswordDto ;
+ public name: string | undefined;
+ public lastname: string | undefined
 }
