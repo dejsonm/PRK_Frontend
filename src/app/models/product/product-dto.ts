@@ -1,7 +1,7 @@
 export class ProductDto {
-  public productCurrency: string | undefined;
-  public productId: number| undefined;
-  public productName: string | undefined;
-  public productPrice: number | undefined;
-  public productQuantity: number | undefined;
+  public productCurrency!: string;
+  public productId!: number;
+  public productName!: string;
+  public productPrice!: number;
+  public productQuantity!: number;
 }

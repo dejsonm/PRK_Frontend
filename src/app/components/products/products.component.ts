@@ -4,6 +4,9 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, SortDirection} from "@angular/material/sort";
 import {HttpClient} from "@angular/common/http";
 import {catchError, map, startWith, switchMap} from "rxjs/operators";
+import {ProductService} from "../../services/product.service";
+import {ProductsDto} from "../../models/product/products-dto";
+import {ProductDto} from "../../models/product/product-dto";
 
 
 
@@ -15,74 +18,52 @@ import {catchError, map, startWith, switchMap} from "rxjs/operators";
 })
 export class ProductsComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['created', 'state', 'number', 'title'];
-  exampleDatabase!: ExampleHttpDatabase | null;
-  data: GithubIssue[] = [];
+  displayedColumns: string[] = ['productId','productCurrency',  'productName', 'productPrice','productQuantity'];
+  productsDatabase!: ProductDatabase | null;
+  data: ProductDto[] = [];
 
-  resultsLength = 0;
-  isLoadingResults = true;
-  isRateLimitReached = false;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private _httpClient: HttpClient, private productService: ProductService) {}
 
   ngAfterViewInit() {
-    this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
+    this.productsDatabase = new ProductDatabase(this.productService);
 
-    // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-
-    merge(this.sort.sortChange, this.paginator.page)
+    merge()
       .pipe(
         startWith({}),
         switchMap(() => {
-          this.isLoadingResults = true;
-          return this.exampleDatabase!.getRepoIssues(
-            this.sort.active, this.sort.direction, this.paginator.pageIndex)
+          return this.productsDatabase!.getProducts()
             .pipe(catchError(() => of(null)));
+
         }),
         map(data => {
-          // Flip flag to show that loading has finished.
-          this.isLoadingResults = false;
-          this.isRateLimitReached = data === null;
 
           if (data === null) {
             return [];
-          }
+          }console.log(data)
+          console.log(this.data)
 
-          // Only refresh the result length if there is new data. In case of rate
-          // limit errors, we do not want to reset the paginator to zero, as that
-          // would prevent users from re-triggering requests.
-          this.resultsLength = data.total_count;
-          return data.items;
+          return data.products;
         })
+
       ).subscribe(data => this.data = data);
+
   }
 }
 
-export interface GithubApi {
-  items: GithubIssue[];
-  total_count: number;
+
+
+
+
+
+export class ProductDatabase{
+  constructor(private productService: ProductService) {
+         }
+
+         getProducts(): Observable<ProductsDto>{
+    return this.productService.getProducts();
+         }
+
 }
 
-export interface GithubIssue {
-  created_at: string;
-  number: string;
-  state: string;
-  title: string;
-}
-
-/** An example database that the data source uses to retrieve data for the table. */
-export class ExampleHttpDatabase {
-  constructor(private _httpClient: HttpClient) {}
-
-  getRepoIssues(sort: string, order: SortDirection, page: number): Observable<GithubApi> {
-    const href = 'https://api.github.com/search/issues';
-    const requestUrl =
-      `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${page + 1}`;
-
-    return this._httpClient.get<GithubApi>(requestUrl);
-  }
-}
