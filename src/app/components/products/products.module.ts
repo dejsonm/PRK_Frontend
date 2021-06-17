@@ -5,6 +5,8 @@ import {ProductsComponent} from "./products.component";
 import {ProductsRoutingModule} from "./products-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductNewModule} from "./product-new/product-new.module";
+import {ProductEditModule} from "./product-edit/product-edit.module";
+import {ProductDeleteModule} from "./product-delete/product-delete.module";
 
 
 
@@ -12,7 +14,7 @@ import {ProductNewModule} from "./product-new/product-new.module";
   declarations: [ProductsComponent],
   imports: [
     CommonModule,
-    AngularMaterialModule,ProductsRoutingModule,FormsModule,ReactiveFormsModule,ProductNewModule
+    AngularMaterialModule,ProductsRoutingModule,FormsModule,ReactiveFormsModule,ProductNewModule,ProductEditModule,ProductDeleteModule
   ]
 })
 export class ProductsModule { }

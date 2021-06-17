@@ -11,12 +11,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<UserDto[]>{
+  getUsers(): Observable<UsersDto>{
     let headers: HttpHeaders = new HttpHeaders()
 
     headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
-    return this.http.get<UserDto[]>('http://localhost:8080/api/v1/users',{headers:headers})
+    return this.http.get<UsersDto>('http://localhost:8080/api/v1/users',{headers:headers})
   }
 
   deleteUser(userId: number): Observable<void>{

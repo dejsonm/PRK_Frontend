@@ -1,34 +1,51 @@
-<div>
-  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);">
+<div class="demo-button-container">
+  <button
+    mat-raised-button
+    [disabled]="!data.length"
+    (click)="removeData()"
+    class="demo-button">
+    Usuń
+  </button>
+
+
+</div>
+
+<div class="example-table-container">
+  <table mat-table [dataSource]="data"  class="example-table">
+
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Id. </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
+      <th mat-header-cell *matHeaderCellDef > Id. </th>
+      <td mat-cell *matCellDef="let user"> {{user.id}} </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa Użytkownika </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+      <th mat-header-cell *matHeaderCellDef > Nazwa Użytkownika </th>
+      <td mat-cell *matCellDef="let user"> {{user.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="lastname">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Imię </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.lastname}} </mat-cell>
+      <th mat-header-cell *matHeaderCellDef > Imię </th>
+      <td mat-cell *matCellDef="let user"> {{user.lastname}} </td>
     </ng-container>
 
     <ng-container matColumnDef="username">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Nazwisko </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.username}} </mat-cell>
+      <th mat-header-cell *matHeaderCellDef > Nazwisko </th>
+      <td mat-cell *matCellDef="let user"> {{user.username}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="delete">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
-      <mat-cell *matCellDef="let user"> <button mat-icon-button aria-label="Example icon button with a delete icon" type="button" mat-raised-button color="accent" matTooltip="Delete" (click)="deleteUser(user.EmpId)"><mat-icon>delete_forever</mat-icon></button></mat-cell>
-    </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table >
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-
- <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
 </div>

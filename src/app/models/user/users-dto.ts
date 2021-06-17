@@ -1,3 +1,5 @@
+import {UserDto} from "./user-dto";
+
 export class UsersDto {
-  public usersArray: Array<UsersDto> | undefined
+  public users!: UserDto[]
 }

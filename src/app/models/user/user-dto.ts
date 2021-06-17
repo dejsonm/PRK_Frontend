@@ -1,6 +1,6 @@
 export class UserDto {
- public userId: number | undefined
- public userLastName:string | undefined
+ public id: number | undefined
+ public lastName:string | undefined
+  public name:string | undefined
   public userName:string | undefined
-  public userUserName:string | undefined
 }

@@ -32,7 +32,7 @@ form: FormGroup;
   }
 
   add(){
-this.productService.createProduct(this.getProductDate()).subscribe(success => this.router.navigate(['/products']));
+this.productService.createProduct(this.getProductDate()).subscribe(() => this.router.navigate(['/products']));
   }
 
 }
