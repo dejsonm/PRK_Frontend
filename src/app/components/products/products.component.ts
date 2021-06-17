@@ -1,12 +1,12 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {merge, Observable,of} from "rxjs";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort, SortDirection} from "@angular/material/sort";
 import {HttpClient} from "@angular/common/http";
 import {catchError, map, startWith, switchMap} from "rxjs/operators";
 import {ProductService} from "../../services/product.service";
 import {ProductsDto} from "../../models/product/products-dto";
 import {ProductDto} from "../../models/product/product-dto";
+import {SelectionModel} from "@angular/cdk/collections";
+import {Router} from "@angular/router";
 
 
 
@@ -18,13 +18,17 @@ import {ProductDto} from "../../models/product/product-dto";
 })
 export class ProductsComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['productId','productCurrency',  'productName', 'productPrice','productQuantity'];
+  displayedColumns: string[] = ['select','productId','productCurrency',  'productName', 'productPrice','productQuantity'];
   productsDatabase!: ProductDatabase | null;
   data: ProductDto[] = [];
+ initialSelection = [];
+  allowMultiSelect = false;
+  selection = new SelectionModel<ProductDto>(this.allowMultiSelect,this.initialSelection)
 
 
 
-  constructor(private _httpClient: HttpClient, private productService: ProductService) {}
+
+  constructor(private _httpClient: HttpClient, private productService: ProductService, private router: Router) {}
 
   ngAfterViewInit() {
     this.productsDatabase = new ProductDatabase(this.productService);
@@ -49,6 +53,21 @@ export class ProductsComponent implements AfterViewInit {
 
       ).subscribe(data => this.data = data);
 
+  }
+
+
+
+  removeData() {
+
+  }
+
+  addData() {
+this.router.navigate(['/products/new'])
+  }
+
+  editData() {
+
+    this.router.navigate(['/products/new'])
   }
 }
 

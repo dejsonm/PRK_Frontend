@@ -4,6 +4,7 @@ import {AngularMaterialModule} from "../angular-material/angular-material.module
 import {ProductsComponent} from "./products.component";
 import {ProductsRoutingModule} from "./products-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ProductNewModule} from "./product-new/product-new.module";
 
 
 
@@ -11,7 +12,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   declarations: [ProductsComponent],
   imports: [
     CommonModule,
-    AngularMaterialModule,ProductsRoutingModule,FormsModule,ReactiveFormsModule
+    AngularMaterialModule,ProductsRoutingModule,FormsModule,ReactiveFormsModule,ProductNewModule
   ]
 })
 export class ProductsModule { }
