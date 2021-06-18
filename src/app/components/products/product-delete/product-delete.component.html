@@ -2,9 +2,12 @@
   <form (ngSubmit)="delete()" [formGroup]="form">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Dodaj nowy produkt</mat-card-title>
+        <mat-card-title>Czy na pewno chcesz usunąć produkt?</mat-card-title>
       </mat-card-header>
       <mat-card-content>
+        <mat-form-field class="full-width-control">
+          <input matInput placeholder="#"  formControlName="productId" required>
+        </mat-form-field>
         <mat-form-field class="full-width-control">
           <mat-label>Waluta</mat-label>
           <mat-select formControlName="productCurrency" >
@@ -26,8 +29,8 @@
       </mat-card-content>
       <mat-card-actions>
         <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">
-          <mat-icon>add</mat-icon>
-          Dodaj
+          <mat-icon>delete</mat-icon>
+          Usuń
         </button>
       </mat-card-actions>
     </mat-card>

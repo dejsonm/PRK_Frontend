@@ -2,9 +2,12 @@
   <form (ngSubmit)="edit()" [formGroup]="form">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Dodaj nowy produkt</mat-card-title>
+        <mat-card-title>Edytujesz obiekt</mat-card-title>
       </mat-card-header>
       <mat-card-content>
+        <mat-form-field class="full-width-control">
+          <input matInput placeholder="#"  formControlName="productId" required>
+        </mat-form-field>
         <mat-form-field class="full-width-control">
           <mat-label>Waluta</mat-label>
           <mat-select formControlName="productCurrency" >

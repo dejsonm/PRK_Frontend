@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ProductCurrencies} from "../../../models/product/product-currencies";
 import {ProductService} from "../../../services/product.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CrudProductDto} from "../../../models/product/crud-product-dto";
+import {ProductDto} from "../../../models/product/product-dto";
 
 @Component({
   selector: 'app-product-delete',
@@ -14,7 +15,7 @@ export class ProductDeleteComponent implements OnInit {
   form: FormGroup;
   currencies = ProductCurrencies.Currencies;
 
-  constructor(private productService: ProductService, private fb: FormBuilder,private router:Router) {
+  constructor(private productService: ProductService, private fb: FormBuilder,private router:Router,public activatedRoute: ActivatedRoute) {
     this.form = this.fb.group({
       productId: [{value: '',disabled: true}, Validators.compose([Validators.required])],
       productCurrency: [{value: '',disabled: true}, Validators.compose([Validators.required])],
@@ -24,16 +25,24 @@ export class ProductDeleteComponent implements OnInit {
     }); }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((map: any) => console.log('route content', map));
+    const state: string | null = this.activatedRoute.snapshot.paramMap.get('state');
+    if (state !== null && state !== undefined) {
+     this.form.setValue(JSON.parse(state));
+    } else {
+     this.router.navigate(['/products/'])
+    }
   }
 
-  getProductDate(): CrudProductDto {
-    console.log(this.form.value as CrudProductDto)
-    return this.form.value as CrudProductDto;
+  getProductDate(): ProductDto {
+    console.log(this.form.value as ProductDto)
+    return this.form.value as ProductDto;
 
   }
+
 
   delete(){
-    this.productService.deleteProduct(this.getProductDate().productPrice).subscribe(success => this.router.navigate(['/products']));
+    this.productService.deleteProduct(this.getProductDate().productId).subscribe(success => this.router.navigate(['/products']));
   }
 
 }

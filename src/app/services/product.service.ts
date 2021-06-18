@@ -35,16 +35,16 @@ export class ProductService {
     return this.http.post<void>('http://localhost:8080/api/v1/products',body,{headers:headers})
   }
 
-  updateProduct(crudProductDto: CrudProductDto,productId: number):Observable<void>{
+  updateProduct(productDto: ProductDto, productId: number):Observable<void>{
     let headers: HttpHeaders = new HttpHeaders();
     let body: CrudProductDto = new CrudProductDto();
 
     headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
-    body.productCurrency = crudProductDto.productCurrency;
-    body.productName = crudProductDto.productName;
-    body.productPrice = crudProductDto.productPrice;
-    body.productQuantity = crudProductDto.productQuantity;
+    body.productCurrency = productDto.productCurrency;
+    body.productName = productDto.productName;
+    body.productPrice = productDto.productPrice;
+    body.productQuantity = productDto.productQuantity;
 
     return this.http.put<void>(`http://localhost:8080/api/v1/products/${productId}`,body,{headers:headers});
   }

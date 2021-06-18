@@ -57,8 +57,7 @@ export class ProductsComponent implements AfterViewInit {
 
   removeData() {
    this.removeProduct = <ProductDto>this.selection.selected.pop()
-    this.productService.sendObject(this.removeProduct)
-    this.router.navigate(['/products/delete'])
+    this.router.navigate(['/products/delete', {state: JSON.stringify(this.removeProduct)}])
   }
 
   addData() {
@@ -68,8 +67,7 @@ export class ProductsComponent implements AfterViewInit {
   editData()
    {
      this.editProduct = <ProductDto>this.selection.selected.pop()
-  this.productService.sendObject(this.editProduct)
-  this.router.navigate(['/products/edit'])
+     this.router.navigate(['/products/edit', {state: JSON.stringify(this.editProduct)}])
   }
 
 
