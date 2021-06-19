@@ -4,11 +4,16 @@ import {Observable, Subject} from "rxjs";
 import {ProductsDto} from "../models/product/products-dto";
 import {CrudProductDto} from "../models/product/crud-product-dto";
 import {ProductDto} from "../models/product/product-dto";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+
+
+  baseUrl = environment.baseUrl;
+
 
   constructor(private http:HttpClient) { }
 
@@ -17,7 +22,7 @@ export class ProductService {
 
     headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
-    return this.http.get<ProductsDto>('http://localhost:8080/api/v1/products',{headers:headers})
+    return this.http.get<ProductsDto>(` ${this.baseUrl}api/v1/products`,{headers:headers})
   }
 
   createProduct( crudProductDto: CrudProductDto): Observable<void>{
@@ -32,7 +37,7 @@ export class ProductService {
 
 
 
-    return this.http.post<void>('http://localhost:8080/api/v1/products',body,{headers:headers})
+    return this.http.post<void>(`  ${this.baseUrl}api/v1/products`,body,{headers:headers})
   }
 
   updateProduct(productDto: ProductDto, productId: number):Observable<void>{
@@ -46,7 +51,7 @@ export class ProductService {
     body.productPrice = productDto.productPrice;
     body.productQuantity = productDto.productQuantity;
 
-    return this.http.put<void>(`http://localhost:8080/api/v1/products/${productId}`,body,{headers:headers});
+    return this.http.put<void>(`  ${this.baseUrl}api/v1/products/${productId}`,body,{headers:headers});
   }
 
   deleteProduct(productId: number | undefined): Observable<unknown>{
@@ -54,7 +59,7 @@ export class ProductService {
 
     headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
-    return this.http.delete(`http://localhost:8080/api/v1/products/${productId}`,{headers:headers},)
+    return this.http.delete(`  ${this.baseUrl}api/v1/products/${productId}`,{headers:headers},)
   }
 
 

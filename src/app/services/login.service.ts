@@ -1,19 +1,20 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HttpHeaders} from "@angular/common/http";
-import {Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {LoginResponseDto} from "../models/login/login-response-dto";
 import {SignupDto} from "../models/login/signup-dto";
-import {tap} from "rxjs/operators";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MessageService} from "./message.service";
 import {LoginDto} from "../models/login/login-dto";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
+  baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient,
               private route: ActivatedRoute,
@@ -28,13 +29,12 @@ export class LoginService {
 
 
   login(loginDto: LoginDto): Subscription {
-//console.log(loginDto)
     let headers: HttpHeaders = new HttpHeaders();
 
     headers = headers.set('X-AUTH-USERNAME', loginDto.email)
     headers = headers.set('X-AUTH-PASSWORD', loginDto.password)
-   // console.log(headers)
-    return this.http.post<LoginResponseDto>('http://localhost:8080/api/v1/sign-in', null, {headers: headers}).subscribe(success => {
+
+    return this.http.post<LoginResponseDto>(`${this.baseUrl}api/v1/sign-in`, null, {headers: headers}).subscribe(success => {
         this.manageToken(success.token,success.admin);
         const url: string = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
         this.router.navigate([url]);
@@ -55,7 +55,7 @@ export class LoginService {
     headers = headers.set('X-AUTH-USERNAME', signup.username)
     headers = headers.set('X-AUTH-PASSWORD', signup.password?.password1)
 
-    return this.http.post<any>('http://localhost:8080/api/v1/sign-up', body, {headers: headers}).subscribe(success=>{
+    return this.http.post<any>(`${this.baseUrl}api/v1/sign-up`, body, {headers: headers}).subscribe(success=>{
         const url: string = this.route.snapshot.queryParams['returnUrl'] || '/auth/login';
         this.router.navigate([url]);
       },

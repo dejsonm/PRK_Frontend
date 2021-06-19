@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UsersDto} from "../models/user/users-dto";
-import {UserDto} from "../models/user/user-dto";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +18,7 @@ export class UserService {
 
     headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
-    return this.http.get<UsersDto>('http://localhost:8080/api/v1/users',{headers:headers})
+    return this.http.get<UsersDto>(`  ${this.baseUrl}api/v1/users`,{headers:headers})
   }
 
   deleteUser(userId: number): Observable<void>{
@@ -24,6 +26,6 @@ export class UserService {
 
     headers = headers.set('Authorization', `Bearer ${<string>localStorage.getItem('token')}`);
 
-    return this.http.delete<void>(`http://localhost:8080/api/v1/users/${userId}`,{headers:headers})
+    return this.http.delete<void>(`  ${this.baseUrl}api/v1/users/${userId}`,{headers:headers})
   }
 }
