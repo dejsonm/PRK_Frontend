@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  checkstatus!: boolean;
+  checkIfAdmin!: boolean;
+  cartIsNotEmpty!:boolean;
 
   public localStorageItem(): boolean {
     if (localStorage.getItem('admin') === 'true') {
@@ -17,10 +19,18 @@ export class DashboardComponent implements OnInit {
     };
   }
 
-  constructor() { }
+  public howMuchProductsCart(): boolean{
+    if(this.cartService.getItems().length > 0){
+      return true
+    }
+    return false
+  }
+
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.checkstatus = this.localStorageItem();
+    this.cartIsNotEmpty = this.howMuchProductsCart()
+    this.checkIfAdmin = this.localStorageItem();
   }
 
 

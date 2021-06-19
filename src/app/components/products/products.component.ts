@@ -7,6 +7,7 @@ import {ProductsDto} from "../../models/product/products-dto";
 import {ProductDto} from "../../models/product/product-dto";
 import {SelectionModel} from "@angular/cdk/collections";
 import {Router} from "@angular/router";
+import {ProductOrderWithName} from "../../models/order/product-order-with-name";
 
 
 @Component({
@@ -22,8 +23,8 @@ export class ProductsComponent implements AfterViewInit {
   initialSelection = [];
   allowMultiSelect = false;
   selection = new SelectionModel<ProductDto>(this.allowMultiSelect, this.initialSelection)
-  removeProduct!: ProductDto ;
-  editProduct!: ProductDto;
+  selectedProduct!: ProductDto;
+  checkIfAdmin: boolean = true;
 
 
   constructor(private _httpClient: HttpClient, private productService: ProductService, private router: Router) {
@@ -31,6 +32,8 @@ export class ProductsComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.productsDatabase = new ProductDatabase(this.productService);
+
+    this.checkIfAdmin = this.localStorageItem();
 
     merge()
       .pipe(
@@ -55,22 +58,42 @@ export class ProductsComponent implements AfterViewInit {
   }
 
 
+  public localStorageItem(): boolean {
+    if (localStorage.getItem('admin') === 'true') {
+      return true
+    } else {
+      return false;
+    }
+    ;
+  }
+
   removeData() {
-   this.removeProduct = <ProductDto>this.selection.selected.pop()
-    this.router.navigate(['/products/delete', {state: JSON.stringify(this.removeProduct)}])
+    this.selectedProduct = <ProductDto>this.selection.selected.pop()
+    this.router.navigate(['/products/delete', {state: JSON.stringify(this.selectedProduct)}])
   }
 
   addData() {
     this.router.navigate(['/products/new'])
   }
 
-  editData()
-   {
-     this.editProduct = <ProductDto>this.selection.selected.pop()
-     this.router.navigate(['/products/edit', {state: JSON.stringify(this.editProduct)}])
+  editData() {
+    this.selectedProduct = <ProductDto>this.selection.selected.pop()
+    this.router.navigate(['/products/edit', {state: JSON.stringify(this.selectedProduct)}])
   }
 
 
+  addToCart() {
+    this.selectedProduct = <ProductDto>this.selection.selected.pop()
+    console.log(this.selectedProduct)
+
+    let sentProductToCart: ProductOrderWithName = new ProductOrderWithName();
+    sentProductToCart.productName = this.selectedProduct.productName
+    sentProductToCart.productId = this.selectedProduct.productId
+    sentProductToCart.productQuantity = this.selectedProduct.productQuantity
+    console.log(this.selectedProduct)
+    console.log(sentProductToCart)
+    this.router.navigate(['/products/addtocart', {state: JSON.stringify(sentProductToCart)}])
+  }
 }
 
 

@@ -19,6 +19,7 @@
           </mat-form-field>
           <mat-form-field class="full-width-control">
             <input matInput placeholder="Powtórz hasło" formControlName="password2" type="password" required>
+            <mat-icon matSuffix>lock</mat-icon>
             <mat-error *ngIf="form.get('password')?.get('password2')?.invalid">Wymagane hasło, 5-25 znaków</mat-error>
           </mat-form-field>
         </ng-container>

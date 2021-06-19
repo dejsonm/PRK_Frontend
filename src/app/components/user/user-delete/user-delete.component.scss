@@ -1,0 +1,30 @@
+@import "~src/theme.scss";
+@import "~src/mixins.scss";
+
+:host{
+  height: 100%;
+  width:100%;
+  display: block;
+}
+
+.product-container{
+  form {
+    min-width: 150 px;
+    max-width: 500 px;
+    mat-card-title {
+      color: mat-color($primary);
+    }
+    a {
+      text-decoration: none;
+      color: mat-color($primary);
+      font-weight: 500;
+      &:hover, &:active {
+        text-decoration: underline;
+        color: mat-color($primary);
+
+      }
+    }
+    @include center-element();
+  }
+  width: 100%;
+}

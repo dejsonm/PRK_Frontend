@@ -1,0 +1,33 @@
+<div class="order-container">
+  <form (ngSubmit)="delete()" [formGroup]="form">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Czy na pewno chcesz usunąć Zamówienie?</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="full-width-control">
+          <input matInput placeholder="#"  formControlName="orderId" required>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-control">
+          <input matInput placeholder="Data"  formControlName="orderDate" required>
+        </mat-form-field>
+        <mat-form-field class="full-width-control">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status" >
+            <mat-option *ngFor="let orderStatuses of statuses" [value]="orderStatuses">
+              <!--              <mat-option *ngFor="let productCurrencies of currencies" [value]="productCurrencies.Currencies">-->
+              {{orderStatuses}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">
+          <mat-icon>delete</mat-icon>
+          Usuń
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

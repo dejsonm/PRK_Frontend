@@ -1,0 +1,26 @@
+.cart-row {
+  display: flex;
+  justify-content: center;
+  .cart-list-item {
+    width: 300px;
+    display: inline-block;
+    margin: 15px;
+    vertical-align: top;
+    text-decoration: none;
+    .cart-icon {
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 35px;
+    }
+  }
+}
+
+.demo-button-container {
+  padding-bottom: 16px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.demo-button + .demo-button {
+  margin-left: 8px;
+}

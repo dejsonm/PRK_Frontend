@@ -13,6 +13,7 @@ import {catchError, map, startWith, switchMap} from "rxjs/operators";
 import {ProductDatabase} from "../products/products.component";
 import {ProductDto} from "../../models/product/product-dto";
 import {SelectionModel} from "@angular/cdk/collections";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user',
@@ -29,8 +30,9 @@ export class UserComponent implements AfterViewInit {
   initialSelection = [];
   allowMultiSelect = false;
   selection = new SelectionModel<UserDto>(this.allowMultiSelect, this.initialSelection)
+  removeUser!: UserDto;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,private router: Router) {
 
   }
 
@@ -59,7 +61,8 @@ export class UserComponent implements AfterViewInit {
   }
 
   removeData(){
-
+    this.removeUser = <UserDto>this.selection.selected.pop()
+    this.router.navigate(['/users/delete', {state: JSON.stringify(this.removeUser)}])
   }
 
 }

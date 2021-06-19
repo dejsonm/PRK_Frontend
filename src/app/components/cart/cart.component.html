@@ -1,0 +1,20 @@
+
+<div class="demo-button-container">
+  <button mat-raised-button (click)="makeOrder()" class="demo-button">
+    <mat-icon>shopping_cart</mat-icon>
+    Zamów
+  </button>
+</div>
+
+<div *ngFor="let item of productsInCartWithName">
+  <div class="cart-row">
+    <a class="cart-list-item">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{item.productName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>{{item.productQuantity}}</mat-card-content>
+      </mat-card>
+    </a>
+  </div>
+</div>

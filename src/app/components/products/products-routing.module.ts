@@ -4,6 +4,7 @@ import {ProductsComponent} from "./products.component";
 import {ProductNewComponent} from "./product-new/product-new.component";
 import {ProductEditComponent} from "./product-edit/product-edit.component";
 import {ProductDeleteComponent} from "./product-delete/product-delete.component";
+import {AddToCartComponent} from "./add-to-cart/add-to-cart.component";
 
 
 const routes: Routes = [{
@@ -20,6 +21,9 @@ const routes: Routes = [{
   }, {
     path: 'delete',
     component: ProductDeleteComponent
+  }, {
+    path: 'addtocart',
+    component: AddToCartComponent
   }
 ];
 

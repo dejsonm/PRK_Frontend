@@ -3,10 +3,13 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {ProductsComponent} from "../products/products.component";
 import {UserComponent} from "./user.component";
+import {UserDeleteComponent} from "./user-delete/user-delete.component";
 
 const routes: Routes = [{
   path: '',
-  component: UserComponent
+  component: UserComponent},{
+  path: 'delete',
+  component: UserDeleteComponent
 }]
 
 @NgModule({

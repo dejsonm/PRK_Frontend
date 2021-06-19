@@ -13,6 +13,7 @@ import {ProductDto} from "../../../models/product/product-dto";
 export class ProductEditComponent implements OnInit {
   form: FormGroup;
   currencies = ProductCurrencies.Currencies;
+  editedProduct!: ProductDto;
 
   constructor(private productService: ProductService, private fb: FormBuilder,private router:Router, public activatedRoute: ActivatedRoute) {
     this.form = this.fb.group({
@@ -27,7 +28,8 @@ export class ProductEditComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((map: any) => console.log('route content', map));
     const state: string | null = this.activatedRoute.snapshot.paramMap.get('state');
     if (state !== null && state !== undefined) {
-      this.form.setValue(JSON.parse(state));
+      this.editedProduct = JSON.parse(state);
+      this.form.setValue(this.editedProduct);
     } else {
       this.router.navigate(['/products/'])
     }
@@ -40,7 +42,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   edit(){
-    this.productService.updateProduct(this.getProductDate(),this.getProductDate().productId).subscribe(() => this.router.navigate(['/products']));
+    this.productService.updateProduct(this.getProductDate(),this.editedProduct.productId).subscribe(() => this.router.navigate(['/products']));
   }
 
 }

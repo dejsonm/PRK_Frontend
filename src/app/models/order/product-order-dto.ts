@@ -1,4 +1,4 @@
 export class ProductOrderDto {
-  public productId: number | undefined
-  public productQuantity: string | undefined
+  public productId!: number
+  public productQuantity!: number
 }

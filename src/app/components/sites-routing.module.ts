@@ -15,6 +15,14 @@ const routes: Routes=[{
     path: 'users',
     loadChildren: () => import('./user/user.module').then(m=>m.UserModule)
   },{
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then(m=>m.CartModule)
+  },{
+    path: 'orders',
+    loadChildren: () => import('./orders/orders.module').then(m=>m.OrdersModule)
+  }
+
+  ,{
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'
