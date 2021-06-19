@@ -1,6 +1,8 @@
 import { Component} from '@angular/core';
 import {LoginService} from "../services/login.service";
 
+/** Stworzone przez Michał Deja  */
+
 @Component({
   selector: 'app-sites',
   templateUrl: './sites.component.html',

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {ProductOrderDto} from "../models/order/product-order-dto";
 import {ProductOrderWithName} from "../models/order/product-order-with-name";
 
+/** Stworzone przez Michał Deja  */
+
 @Injectable({
   providedIn: 'root'
 })

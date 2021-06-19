@@ -11,6 +11,9 @@ import {SimpleOrderDto} from "../../../models/order/simple-order-dto";
   styleUrls: ['./status-order.component.scss']
 })
 export class StatusOrderComponent implements OnInit {
+
+  /** Stworzone przez Michał Deja  */
+
   form: FormGroup;
   statuses = OrderStatus.Statuses;
   editedOrder!: SimpleOrderDto;

@@ -1,3 +1,5 @@
+/** Stworzone przez Michał Deja  */
+
 export class UserDto {
  public id!: number
  public lastName!:string

@@ -7,7 +7,7 @@ import {OrdersRoutingModule} from "./orders-routing.module";
 import {DeleteOrderModule} from "./delete-order/delete-order.module";
 import {StatusOrderModule} from "./status-order/status-order.module";
 
-
+/** Stworzone przez Michał Deja  */
 
 @NgModule({
   declarations: [OrdersComponent],

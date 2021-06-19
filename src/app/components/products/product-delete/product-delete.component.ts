@@ -6,6 +6,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CrudProductDto} from "../../../models/product/crud-product-dto";
 import {ProductDto} from "../../../models/product/product-dto";
 
+/** Stworzone przez Michał Deja  */
+
 @Component({
   selector: 'app-product-delete',
   templateUrl: './product-delete.component.html',

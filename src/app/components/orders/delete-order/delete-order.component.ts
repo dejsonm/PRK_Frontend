@@ -11,6 +11,9 @@ import {SimpleOrderDto} from "../../../models/order/simple-order-dto";
   styleUrls: ['./delete-order.component.scss']
 })
 export class DeleteOrderComponent implements OnInit {
+
+  /** Stworzone przez Michał Deja  */
+
   form: FormGroup;
   statuses = OrderStatus.Statuses;
 

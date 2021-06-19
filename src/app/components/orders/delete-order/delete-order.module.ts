@@ -4,7 +4,7 @@ import {AngularMaterialModule} from "../../angular-material/angular-material.mod
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DeleteOrderComponent} from "./delete-order.component";
 
-
+/** Stworzone przez Michał Deja  */
 
 @NgModule({
   declarations: [DeleteOrderComponent],

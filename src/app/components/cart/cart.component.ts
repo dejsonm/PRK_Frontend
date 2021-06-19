@@ -12,6 +12,8 @@ import {Router} from "@angular/router";
 })
 export class CartComponent implements OnInit {
 
+  /** Stworzone przez Michał Deja  */
+
   createOrderDto: CreateOrderDto = new CreateOrderDto();
   productsInCart: ProductOrderDto[] = this.cartService.getItems();
   productsInCartWithName = this.cartService.getItemsWithName();

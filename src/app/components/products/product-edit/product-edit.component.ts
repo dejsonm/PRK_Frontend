@@ -5,6 +5,8 @@ import {ProductService} from "../../../services/product.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductDto} from "../../../models/product/product-dto";
 
+/** Stworzone przez Michał Deja  */
+
 @Component({
   selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',

@@ -6,7 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import {AuthRoutingModule} from "./auth-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
-
+/** Stworzone przez Michał Deja  */
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],

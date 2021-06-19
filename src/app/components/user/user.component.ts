@@ -1,19 +1,13 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, } from '@angular/core';
 import {UserDto} from "../../models/user/user-dto";
-import {MatTableDataSource} from "@angular/material/table";
-import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
-import {MatSort} from "@angular/material/sort";
-import {MatPaginator} from "@angular/material/paginator";
 import {UserService} from "../../services/user.service";
 import {UsersDto} from "../../models/user/users-dto";
-import {ProductService} from "../../services/product.service";
 import {merge, Observable, of} from "rxjs";
-import {ProductsDto} from "../../models/product/products-dto";
 import {catchError, map, startWith, switchMap} from "rxjs/operators";
-import {ProductDatabase} from "../products/products.component";
-import {ProductDto} from "../../models/product/product-dto";
 import {SelectionModel} from "@angular/cdk/collections";
 import {Router} from "@angular/router";
+
+/** Stworzone przez Michał Deja  */
 
 @Component({
   selector: 'app-user',

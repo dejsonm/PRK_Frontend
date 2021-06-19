@@ -4,7 +4,7 @@ import {AngularMaterialModule} from "../../angular-material/angular-material.mod
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserDeleteComponent} from "./user-delete.component";
 
-
+/** Stworzone przez Michał Deja  */
 
 @NgModule({
   declarations: [UserDeleteComponent],

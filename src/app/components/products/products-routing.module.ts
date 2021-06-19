@@ -6,6 +6,7 @@ import {ProductEditComponent} from "./product-edit/product-edit.component";
 import {ProductDeleteComponent} from "./product-delete/product-delete.component";
 import {AddToCartComponent} from "./add-to-cart/add-to-cart.component";
 
+/** Stworzone przez Michał Deja  */
 
 const routes: Routes = [{
   path: '',

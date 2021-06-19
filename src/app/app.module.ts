@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {SitesModule} from "./components/sites.module";
 import {AuthModule} from "./auth/auth.module";
 
+/** Stworzone przez Michał Deja  */
 
 @NgModule({
   declarations: [

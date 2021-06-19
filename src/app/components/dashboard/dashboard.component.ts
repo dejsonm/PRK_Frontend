@@ -8,6 +8,8 @@ import {CartService} from "../../services/cart.service";
 })
 export class DashboardComponent implements OnInit {
 
+  /** Stworzone przez Michał Deja  */
+
   checkIfAdmin!: boolean;
   cartIsNotEmpty!:boolean;
 

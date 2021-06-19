@@ -9,7 +9,7 @@ import {ProductEditModule} from "./product-edit/product-edit.module";
 import {ProductDeleteModule} from "./product-delete/product-delete.module";
 import {AddToCartModule} from "./add-to-cart/add-to-cart.module";
 
-
+/** Stworzone przez Michał Deja  */
 
 @NgModule({
   declarations: [ProductsComponent],

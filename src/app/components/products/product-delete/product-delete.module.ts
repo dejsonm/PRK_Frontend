@@ -4,7 +4,7 @@ import {ProductDeleteComponent} from "./product-delete.component";
 import {AngularMaterialModule} from "../../angular-material/angular-material.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
-
+/** Stworzone przez Michał Deja  */
 
 @NgModule({
   declarations: [ProductDeleteComponent],

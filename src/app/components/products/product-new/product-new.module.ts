@@ -4,6 +4,7 @@ import {AngularMaterialModule} from "../../angular-material/angular-material.mod
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductNewComponent} from "./product-new.component";
 
+/** Stworzone przez Michał Deja  */
 
 @NgModule({
   declarations: [ProductNewComponent],

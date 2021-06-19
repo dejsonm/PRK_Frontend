@@ -31,7 +31,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatTooltipModule} from "@angular/material/tooltip";
 
-
+/** Stworzone przez Michał Deja  */
 
 @NgModule({
   declarations: [],

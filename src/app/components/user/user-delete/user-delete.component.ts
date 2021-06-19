@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../../services/user.service";
 import {UserDto} from "../../../models/user/user-dto";
 
+/** Stworzone przez Michał Deja  */
+
 @Component({
   selector: 'app-user-delete',
   templateUrl: './user-delete.component.html',

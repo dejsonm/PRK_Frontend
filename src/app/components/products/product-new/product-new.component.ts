@@ -5,6 +5,8 @@ import {ProductCurrencies} from "../../../models/product/product-currencies";
 import {CrudProductDto} from "../../../models/product/crud-product-dto";
 import {Router} from "@angular/router";
 
+/** Stworzone przez Michał Deja  */
+
 @Component({
   selector: 'app-product-new',
   templateUrl: './product-new.component.html',

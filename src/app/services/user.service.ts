@@ -4,6 +4,8 @@ import {Observable} from "rxjs";
 import {UsersDto} from "../models/user/users-dto";
 import {environment} from "../../environments/environment";
 
+/** Stworzone przez Michał Deja  */
+
 @Injectable({
   providedIn: 'root'
 })

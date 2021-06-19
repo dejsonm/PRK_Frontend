@@ -17,6 +17,8 @@ import {OrderDto} from "../../models/order/order-dto";
 })
 export class OrdersComponent implements AfterViewInit {
 
+  /** Stworzone przez Michał Deja  */
+
   displayedColumns: string[] = ['select',  'orderId', 'orderDate','status'];
   ordersDatabase!: OrderDatabase | null;
   data: SimpleOrderDto[] = [];

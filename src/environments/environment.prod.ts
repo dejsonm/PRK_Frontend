@@ -1,3 +1,5 @@
+/** Stworzone przez Michał Deja  */
+
 export const environment = {
   production: true,
 

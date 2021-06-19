@@ -1,3 +1,5 @@
+/** Stworzone przez Michał Deja  */
+
 export class ProductDto {
   public productCurrency!: string;
   public productId!: number;

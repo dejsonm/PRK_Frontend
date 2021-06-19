@@ -4,7 +4,7 @@ import {SitesRoutingModule} from "./sites-routing.module";
 import {AngularMaterialModule} from "./angular-material/angular-material.module";
 import {SitesComponent} from "./sites.component";
 
-
+/** Stworzone przez Michał Deja  */
 
 @NgModule({
   declarations: [SitesComponent],

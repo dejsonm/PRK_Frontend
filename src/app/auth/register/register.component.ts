@@ -10,6 +10,8 @@ import {SignupDto} from "../../models/login/signup-dto";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  /** Stworzone przez Michał Deja  */
+
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private loginService: LoginService) {

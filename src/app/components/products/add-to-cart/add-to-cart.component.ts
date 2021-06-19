@@ -5,6 +5,8 @@ import {CartService} from "../../../services/cart.service";
 import {ProductOrderWithName} from "../../../models/order/product-order-with-name";
 import {ProductOrderDto} from "../../../models/order/product-order-dto";
 
+/** Stworzone przez Michał Deja  */
+
 @Component({
   selector: 'app-add-to-cart',
   templateUrl: './add-to-cart.component.html',

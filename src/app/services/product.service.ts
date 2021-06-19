@@ -6,6 +6,8 @@ import {CrudProductDto} from "../models/product/crud-product-dto";
 import {ProductDto} from "../models/product/product-dto";
 import {environment} from "../../environments/environment";
 
+/** Stworzone przez Michał Deja  */
+
 @Injectable({
   providedIn: 'root'
 })

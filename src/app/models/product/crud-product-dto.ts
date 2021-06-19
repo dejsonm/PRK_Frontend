@@ -1,3 +1,5 @@
+/** Stworzone przez Michał Deja  */
+
 export class CrudProductDto {
   public productCurrency!: string;
   public productName!: string;

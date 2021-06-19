@@ -1,5 +1,7 @@
 import{AbstractControl,FormGroup} from "@angular/forms";
 
+/** Stworzone przez Michał Deja  */
+
 export function equalFieldsValidator(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
     const control: AbstractControl = <AbstractControl>formGroup.get(controlName);

@@ -9,6 +9,7 @@ import {SelectionModel} from "@angular/cdk/collections";
 import {Router} from "@angular/router";
 import {ProductOrderWithName} from "../../models/order/product-order-with-name";
 
+/** Stworzone przez Michał Deja  */
 
 @Component({
   selector: 'app-products',

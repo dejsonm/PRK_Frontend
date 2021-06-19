@@ -11,7 +11,7 @@ import {LoginDto} from "../../models/login/login-dto";
 })
 export class LoginComponent implements OnInit
 {
-
+  /** Stworzone przez Michał Deja  */
   form: FormGroup ;
 
   constructor(private fb: FormBuilder, private loginService:LoginService,private router: Router) { this.form = this.fb.group({

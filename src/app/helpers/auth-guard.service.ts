@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -10,27 +10,30 @@ import {
 import {LoginService} from "../services/login.service";
 import {Observable} from "rxjs";
 
+/** Stworzone przez Michał Deja  */
+
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate,CanActivateChild{
+export class AuthGuardService implements CanActivate, CanActivateChild {
 
-  constructor(private router: Router, private loginService: LoginService) { }
+  constructor(private router: Router, private loginService: LoginService) {
+  }
 
-canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-if (this.loginService.isUserAuthenticated()){
-  return true;
-}
-this.router.navigate(['auth/login'], {queryParams: { returnUrl: state.url}});
-return false;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (this.loginService.isUserAuthenticated()) {
+      return true;
+    }
+    this.router.navigate(['auth/login'], {queryParams: {returnUrl: state.url}});
+    return false;
 
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.loginService.isUserAuthenticated()){
+    if (this.loginService.isUserAuthenticated()) {
       return true;
     }
-    this.router.navigate(['auth/login'], {queryParams: { returnUrl: state.url}});
+    this.router.navigate(['auth/login'], {queryParams: {returnUrl: state.url}});
     return false;
 
 

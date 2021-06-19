@@ -9,6 +9,8 @@ import {MessageService} from "./message.service";
 import {LoginDto} from "../models/login/login-dto";
 import {environment} from "../../environments/environment";
 
+/** Stworzone przez Michał Deja  */
+
 @Injectable({
   providedIn: 'root'
 })
