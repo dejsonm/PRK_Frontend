@@ -19,7 +19,7 @@ export class AddToCartComponent implements OnInit {
     this.form = this.fb.group({
     productId: [{value: '',disabled: true}, Validators.compose([Validators.required])],
     productName: [{value: '',disabled: true}, Validators.compose([Validators.required])],
-    productQuantity: [{value: '',disabled: false}, Validators.compose([Validators.required,Validators.max(100)])]
+    productQuantity: [{value: '',disabled: false}, Validators.compose([Validators.required,Validators.max(1000)])]
   });  }
 
   ngOnInit(): void {
