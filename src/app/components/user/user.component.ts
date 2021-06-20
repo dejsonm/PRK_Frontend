@@ -17,7 +17,7 @@ import {Router} from "@angular/router";
 export class UserComponent implements AfterViewInit {
 
 
-  displayedColumns: string[] = ['select','id','name','lastname','username']
+  displayedColumns: string[] = ['select','id','name','lastName','userName']
 
   usersDatabase!: UserDatabase | null;
   data: UserDto[] = [];
